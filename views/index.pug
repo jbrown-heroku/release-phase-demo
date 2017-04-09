@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  br
+  div.db
+    h3 Database Structure
+    pre
+      each table in db.tables
+        p= table
+        ul
+          each column in db.columns[table]
+            li= column
