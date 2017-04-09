@@ -3,21 +3,22 @@
 This is a simple Node.js app to show the a database migration using Heroku's [release phase](https://devcenter.heroku.com/articles/release-phase).
 
 ### Demo Setup
-Setup Heroku Pipeline with staging and production apps
-```
+Setup a Heroku Pipeline with staging and production apps
+```shell
 heroku pipelines:setup nodejs-release-phase
 # provide this repository when prompted for one: crcastle/release-phase-demo
 # then answer No to all questions
+# nodejs-release-phase is used to name the automatically created staging and production apps; if that name is being used by another app, this step will fail. Use a different name.
 ```
 
 Git clone code locally
-```
+```shell
 git clone git@github.com:crcastle/release-phase-demo.git
 cd release-phase-demo
 ```
 
 Add staging app as git remote we will deploy to
-```
+```shell
 heroku git:remote -a nodejs-release-phase-staging
 ```
 
@@ -39,19 +40,19 @@ heroku git:remote -a nodejs-release-phase-staging
 
 ### Local Development
 Setup
-```
+```shell
 docker-compose up -d
 yarn
 node_modules/.bin/sequelize db:migrate
 ```
 
 Run
-```
+```shell
 npm start
 # Open localhost:3000
 ```
 
 Finish
-```
+```shell
 docker-compose down
 ```
