@@ -1,0 +1,11 @@
+{
+  "name": "Release Phase Demo App",
+  "description": "Simple Node.js app showing some example uses of Heroku's release phase",
+  "keywords": [
+    "heroku",
+    "release phase"
+  ],
+  "addons": [
+    "heroku-postgresql"
+  ]
+}
