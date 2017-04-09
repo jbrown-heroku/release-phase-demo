@@ -33,9 +33,9 @@ heroku git:remote -a nodejs-release-phase-staging
 1. Show `release` line in Procfile. This is what executes the migration after build but before deploy.
 1. In another command prompt window in the same directory, start a stream of logs  
   `heroku logs -t`
-1. Deploy. During deploy show split screen of streaming logs (from previous step) and web browser showing pipeline with app being built  
+1. Deploy. During deploy show split screen of streaming logs (from previous step) and web browser showing pipeline with app being built (click Show Build Log on app)  
   `git push heroku master`
-1. When build and deploy are finished, show updated staging app (which shows new DB structure)  
+1. When build and deploy are finished, open staging app (which shows new DB structure created by our migration)  
   Select "Open app in browser" from staging app
 
 ### Local Development
