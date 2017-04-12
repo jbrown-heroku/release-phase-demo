@@ -3,27 +3,31 @@
 This is a simple Node.js app to show the a database migration using Heroku's [release phase](https://devcenter.heroku.com/articles/release-phase).
 
 ### Demo Setup
+Fork this repo to your own GitHub account
+Click ➡ https://github.com/crcastle/release-phase-demo/fork
+
 Setup a Heroku Pipeline with staging and production apps
 ```shell
 heroku pipelines:setup nodejs-release-phase
-# provide this repository when prompted for one: crcastle/release-phase-demo
+# provide your forked copy of the repository when prompted for one: <YOUR_GITHUB_USER>/release-phase-demo
 # then answer No to all questions
 # nodejs-release-phase is used to name the automatically created staging and production apps; if that name is being used by another app, this step will fail. Use a different name.
 ```
 
-Git clone code locally and install dependencies
+Git clone code locally and install dependencies with [yarn](https://yarnpkg.com/en/docs/install)
 ```shell
-git clone git@github.com:crcastle/release-phase-demo.git
+git clone git@github.com:<YOUR_GITHUB_USER>/release-phase-demo.git
 cd release-phase-demo
 yarn
 ```
 
-Add staging app as git remote we will deploy to
+Add staging app as git remote to which we will deploy
 ```shell
 heroku git:remote -a nodejs-release-phase-staging
 ```
 
 ### Demo Flow
+1. Show pipeline
 1. Show current state of app  
   Select "Open app in browser" from pipeline's staging app
 1. Create new table by creating a new model and migration  
