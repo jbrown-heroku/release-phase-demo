@@ -3,7 +3,7 @@
 This is a simple Node.js app to show the a database migration using Heroku's [release phase](https://devcenter.heroku.com/articles/release-phase).
 
 ### Demo Setup
-Fork this repo to your own GitHub account
+Fork this repo to your own GitHub account  
 Click ➡ https://github.com/crcastle/release-phase-demo/fork
 
 Setup a Heroku Pipeline with staging and production apps
