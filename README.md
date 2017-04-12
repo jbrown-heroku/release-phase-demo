@@ -33,7 +33,7 @@ heroku git:remote -a nodejs-release-phase-staging
 1. Create new table by creating a new model and migration  
   `node_modules/.bin/sequelize model:create --name Post --attributes title:string,author:string,body:text`
 1. Add and commit migration  
-  `git add migrations`  
+  `git add migrations models`  
   `git commit -m 'Add Post model'`
 1. Show `release` line in Procfile. This is what executes the migration after build but before deploy.
 1. In another command prompt window in the same directory, start a stream of logs  
