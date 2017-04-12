@@ -11,9 +11,8 @@ heroku pipelines:setup nodejs-release-phase
 # nodejs-release-phase is used to name the automatically created staging and production apps; if that name is being used by another app, this step will fail. Use a different name.
 ```
 
-Fork this repo on GitHub (https://github.com/crcastle/release-phase-demo/fork), then clone the fork and install the application's dependencies.
+Git clone code locally and install dependencies
 ```shell
-# To fork, goto: https://github.com/crcastle/release-phase-demo/fork
 git clone git@github.com:crcastle/release-phase-demo.git
 cd release-phase-demo
 yarn
