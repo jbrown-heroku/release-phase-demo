@@ -31,7 +31,8 @@ heroku git:remote -a nodejs-release-phase-staging
 1. Show current state of app  
   Select "Open app in browser" from pipeline's staging app
 1. Create new table by creating a new model and migration  
-  `node_modules/.bin/sequelize model:create --name Post --attributes title:string,author:string,body:text`
+  `sequelize model:create --name Post --attributes title:string,author:string,body:text`  
+  If the `sequelize` command does not work, you probably need to add its directory to your environment's PATH variable. Run this command from the `release-phase-demo` directory to do that: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
 1. Add and commit new model and migration files  
   `git add migrations models`  
   `git commit -m 'Add Post model'`
@@ -48,8 +49,9 @@ Setup
 ```shell
 docker-compose up -d
 yarn
-node_modules/.bin/sequelize db:migrate
+sequelize db:migrate
 ```
+If the `sequelize` command does not work, you probably need to add its directory to your PATH. Run this command from the `release-phase-demo` directory: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
 
 Run
 ```shell
