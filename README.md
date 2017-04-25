@@ -31,23 +31,27 @@ heroku git:remote -a nodejs-release-phase-staging
 1. Show current state of app  
   Select "Open app in browser" from pipeline's staging app
 1. Create new table by creating a new model and migration  
-  `node_modules/.bin/sequelize model:create --name Post --attributes title:string,author:string,body:text`
+  `sequelize model:create --name Post --attributes title:string,author:string,body:text`  
+  If the `sequelize` command does not work, you probably need to add its directory to your environment's PATH variable. Run this command from the `release-phase-demo` directory to do that: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
 1. Add and commit new model and migration files  
   `git add migrations models`  
   `git commit -m 'Add Post model'`
-1. Show `release` line in Procfile. This is what executes the migration after build but before deploy.
-1. Deploy. During deploy show split screen of streaming logs (from previous step) and web browser showing pipeline with app being built.  
+1. Add `release` line in Procfile. This is what executes the migration after build but before deploy.
+1. Deploy and show CLI ouput (not split screen).  
   `git push heroku master`
 1. When build and deploy are finished, open staging app (which shows new DB structure created by our migration)  
   Select "Open app in browser" from staging app
+1. In the pipeline dashboard, promote app from staging to production.  This will cause release phase to run again.
+1. Show release phase running on the "production" card UI and expand the "Releasing" dialog
 
 ### Local Development
 Setup
 ```shell
 docker-compose up -d
 yarn
-node_modules/.bin/sequelize db:migrate
+sequelize db:migrate
 ```
+If the `sequelize` command does not work, you probably need to add its directory to your PATH. Run this command from the `release-phase-demo` directory: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
 
 Run
 ```shell
