@@ -26,6 +26,11 @@ Add staging app as git remote to which we will deploy
 heroku git:remote -a nodejs-release-phase-staging
 ```
 
+Update your environment PATH variable so `sequelize` can be called without its full path. You'll have to re-run this any time you open a new shell.
+```shell
+declare -x PATH=$PATH:$(pwd)/node_modules/.bin
+```
+
 ### Demo Flow
 1. Show pipeline
 1. Show current state of app  
