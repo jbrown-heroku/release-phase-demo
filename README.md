@@ -35,7 +35,7 @@ heroku git:remote -a nodejs-release-phase-staging
 1. Add and commit new model and migration files  
   `git add migrations models`  
   `git commit -m 'Add Post model'`
-1. Show `release` line in Procfile. This is what executes the migration after build but before deploy.
+1. Add `release` line in Procfile. This is what executes the migration after build but before deploy.
 1. Deploy and show CLI ouput (not split screen).  
   `git push heroku master`
 1. When build and deploy are finished, open staging app (which shows new DB structure created by our migration)  
