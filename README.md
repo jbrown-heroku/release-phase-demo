@@ -2,7 +2,9 @@
 
 This is a simple Node.js app to show the a database migration using Heroku's [release phase](https://devcenter.heroku.com/articles/release-phase).
 
-### Demo Setup
+There are two demo flows described below. The first shows release phase work as simply as possible.  The second shows how release phase can easily be incorporated into [Heroku Flow](https://www.heroku.com/flow).
+
+### Demo Setup (same for both demos)
 Fork this repo to your own GitHub account  
 Click ➡ https://github.com/heroku-demos/release-phase-demo/fork
 
@@ -32,6 +34,22 @@ declare -x PATH=$PATH:$(pwd)/node_modules/.bin
 ```
 
 ### Demo Flow
+#### Release Phase
+1. Show current state of app  
+  Start with homepage of app open showing single table
+1. Create migration for new table  
+  `sequelize model:create --name Post --attributes title:string,author:string,body:text`  
+  If the `sequelize` command does not work, you probably need to add its directory to your environment's PATH variable. Run this command from the `release-phase-demo` directory: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
+1. Add `release` line in Procfile. This is what executes the migration after build but before deploy.
+1. Add and commit new model and migration files and updated Procfile  
+  `git add migrations models Procfile`  
+  `git commit -m 'Add Post model'`
+1. Deploy and show CLI ouput, highlighting release phase migration output at the end.  
+  `git push heroku master`
+1. Show that the app now has a Post table!  
+  `heroku open`
+
+#### Heroku Flow + Release Phase
 1. Show pipeline
 1. Show current state of app  
   Select "Open app in browser" from pipeline's staging app
