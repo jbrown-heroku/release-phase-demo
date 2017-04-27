@@ -56,10 +56,10 @@ declare -x PATH=$PATH:$(pwd)/node_modules/.bin
 1. Create new table by creating a new model and migration  
   `sequelize model:create --name Post --attributes title:string,author:string,body:text`  
   If the `sequelize` command does not work, you probably need to add its directory to your environment's PATH variable. Run this command from the `release-phase-demo` directory to do that: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
-1. Add and commit new model and migration files  
-  `git add migrations models`  
-  `git commit -m 'Add Post model'`
 1. Add `release` line in Procfile. This is what executes the migration after build but before deploy.
+1. Add and commit new model and migration files and updated Procfile  
+ `git add migrations models Procfile`  
+ `git commit -m 'Add Post model'`
 1. Deploy and show CLI ouput (not split screen).  
   `git push heroku master`
 1. When build and deploy are finished, open staging app (which shows new DB structure created by our migration)  
