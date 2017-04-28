@@ -33,10 +33,10 @@ Update your environment PATH variable so `sequelize` can be called without its f
 declare -x PATH=$PATH:$(pwd)/node_modules/.bin
 ```
 
-### Demo Flow
-#### Release Phase
-1. Show current state of app  
-  Start with homepage of app open showing single table
+### Demo Flows (two simple Release Phase demo flows, one Release Phase + Heroku Flow demo flow)
+
+#### Release Phase v1
+
 1. Create migration for new table  
   `sequelize model:create --name Post --attributes title:string,author:string,body:text`  
   If the `sequelize` command does not work, you probably need to add its directory to your environment's PATH variable. Run this command from the `release-phase-demo` directory: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
@@ -47,6 +47,27 @@ declare -x PATH=$PATH:$(pwd)/node_modules/.bin
 1. Deploy and show CLI ouput, highlighting release phase migration output at the end.  
   `git push heroku master`
 1. Show that the app now has a Post table!  
+  `heroku open`
+
+#### Release Phase v2
+
+*Pre-demo prep*
+1. Create migration for new table  
+  `sequelize model:create --name Post --attributes title:string,author:string,body:text`  
+  If the `sequelize` command does not work, you probably need to add its directory to your environment's PATH variable. Run this command from the `release-phase-demo` directory: `declare -x PATH=$PATH:$(pwd)/node_modules/.bin`
+1. Add and commit new model and migration files.  
+  `git add migrations models`  
+  `git commit -m 'Add Post model'`
+
+*Demo!*
+1. Add `release` line in Procfile. This is what executes the migration after build but before deploy.
+1. Show current state of app, highlighting the one table  
+  `heroku open`
+1. Add and commit updated Procfile  
+  `git commit -am 'Add release task to Procfile'`
+1. Deploy and show CLI ouput, highlighting release phase migration output at the end.  
+  `git push heroku master`
+1. Show that the app now has two tables including the Post table!  
   `heroku open`
 
 #### Heroku Flow + Release Phase
